@@ -1,0 +1,5 @@
+BASE_DIR = '/home/marta/jku/emotion-popularity/'
+DATA_DIR = BASE_DIR + 'data/'
+NOTEBOOKS_DIR = BASE_DIR + 'notebooks/'
+PSYIAS_DIR = BASE_DIR + 'psyias_2024'
+ONION_DIR = DATA_DIR + 'alternate_selection_repeating_artists_listeners/'
