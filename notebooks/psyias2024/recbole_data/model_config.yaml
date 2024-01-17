@@ -1,0 +1,28 @@
+#model config
+model: FM
+data_path: /home/marta/jku/emotion-popularity/notebooks/psyias2024/recbole_data/dataset/
+dataset: onion # ml-100k
+
+# dataset config : Context-aware Recommendation
+load_col:
+    inter: ['user_id', 'item_id', 'counts']
+    item: ['item_id', 'emotions']
+threshold: {'counts': 2}
+
+# Training and evaluation config
+epochs: 500
+train_batch_size: 4096
+eval_batch_size: 1024
+metric_decimal_place: 4         # (int) The decimal place of metric scores.
+eval_args:
+  split: {'RS':[0.6,0.2,0.2]}
+  order: RO
+  group_by: none                # (str) The grouping strategy ranging in ['user', 'none'].
+  mode: full                    # (str) The evaluation mode ranging in ['full','unixxx','popxxx','labeled'].
+train_neg_sample_args: ~
+metrics: ["NDCG"]
+topk: [10]                      # (list or int or None) The value of k for topk evaluation metrics.
+valid_metric: 'NDCG@10'
+valid_metric_bigger: True
+repeatable: False               # (bool) Whether to evaluate results with a repeatable recommendation scene.
+
