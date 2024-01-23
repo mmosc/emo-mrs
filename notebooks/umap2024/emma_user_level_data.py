@@ -58,7 +58,10 @@ song_majority_bin = (song_majority_bin[gems_9] >= 0.5) * 1
 # Sparsity
 song_majority_bin.to_numpy().sum() / (song_majority_bin.shape[0] * song_majority_bin.shape[1])
 #%
-song_majority_bin
 #%%
 song_majority_bin.to_csv(DATA_DIR + 'emma_bin_majority_to_compare.csv', index=True)
 #%%
+
+gems_9
+#%%
+

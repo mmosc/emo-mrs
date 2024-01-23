@@ -16,13 +16,8 @@ def compute_cohen_on_pandas_columns(onion_data: pd.DataFrame, emma_data: pd.Data
     :return:
     """
 
-    if isinstance(gems, str):
-        gems = [gems]
-    onion_data = onion_data[gems]
-    emma_data = emma_data[gems]
-    if isinstance(gems, list):
-        onion_data = np.concatenate(onion_data.to_numpy())
-        emma_data = np.concatenate(emma_data.to_numpy())
+    onion_data = list(onion_data[gems].to_numpy().reshape(-1,))
+    emma_data = list(emma_data[gems].to_numpy().reshape(-1, ))
     kappa = cohen_kappa_score(onion_data, emma_data)
     return kappa
 
