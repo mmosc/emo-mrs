@@ -17,17 +17,8 @@ columns_i_dont_know
 #%%
 emma_user_level = emma_user_level.drop(columns=columns_i_dont_know)
 #%%
-gems_9 = [
-    'wond',
-    'tran',
-    'tend',
-    'nost',
-    'peac',
-    'ener',
-    'joya',
-    'sadn',
-    'tens',
-]
+gems_9 = ['tend', 'joya', 'tran', 'peac', 'nost', 'wond', 'ener', 'sadn', 'tens']
+
 #%%
 all_values = emma_user_level[gems_9].to_numpy().reshape((-1, ))
 n, bins, patches = plt.hist(all_values, bins=100)
@@ -59,6 +50,7 @@ song_majority_bin = (song_majority_bin[gems_9] >= 0.5) * 1
 song_majority_bin.to_numpy().sum() / (song_majority_bin.shape[0] * song_majority_bin.shape[1])
 #%
 #%%
+song_majority_percent.to_csv(DATA_DIR + 'emma_percent.csv', index=True)
 song_majority_bin.to_csv(DATA_DIR + 'emma_bin_majority_to_compare.csv', index=True)
 #%%
 
