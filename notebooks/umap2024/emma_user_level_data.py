@@ -53,7 +53,16 @@ song_majority_bin.to_numpy().sum() / (song_majority_bin.shape[0] * song_majority
 song_majority_percent.to_csv(DATA_DIR + 'emma_percent.csv', index=True)
 song_majority_bin.to_csv(DATA_DIR + 'emma_bin_majority_to_compare.csv', index=True)
 #%%
-
-gems_9
+song_majority_bin
 #%%
+song_majority_bin = song_majority_bin.reset_index()
+song_majority_bin.columns = ['item_id:token'] + list(song_majority_bin.columns[1:])
+#emma_bin_to_compare = song_majority_bin[list(song_majority_bin.columns[0:10])]
 
+
+index_to_gems_9 = {index: gems for index, gems in enumerate(gems_9)}
+indices = [list(np.nonzero(x)[0].astype(int)) for x in song_majority_bin[gems_9].to_numpy()]
+song_majority_bin['emotions:token_seq'] = indices
+song_majority_bin
+song_majority_bin_for_recbole = song_majority_bin[['item_id:token', 'emotions:token_seq']]
+song_majority_bin.to_csv('/home/marta/jku/emotion-popularity/notebooks/psyias2024/recbole_data/emma_majority.item', sep='\t', index=None)
