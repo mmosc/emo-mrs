@@ -22,6 +22,7 @@ def compute_cohen_on_pandas_columns(onion_data: pd.DataFrame, emma_data: pd.Data
     return kappa
 
 
+
 def compute_contingency_table(onion_data: pd.DataFrame, emma_data: pd.DataFrame, gems: Union[str, List[str]]):
     """
     Computes the contingency table over two dataframes storing binary data, over either a column (if gems is a string)
@@ -55,3 +56,14 @@ def compute_contingency_table(onion_data: pd.DataFrame, emma_data: pd.DataFrame,
     ])
 
     return contingency
+
+
+def convert_to_recbole(dataframe: pd.DataFrame) -> pd.DataFrame:
+    features = dataframe.columns[1:]
+    dataframe.columns = ['item_id:token'] + list(features)
+
+    index_to_column = {index: column for index, column in enumerate(features)}
+    indices = [list(np.nonzero(x)[0].astype(int)) for x in dataframe[features].to_numpy()]
+    dataframe['emotions:token_seq'] = indices
+    song_majority_bin_for_recbole = dataframe[['item_id:token', 'emotions:token_seq']]
+    return song_majority_bin_for_recbole
