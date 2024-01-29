@@ -1,7 +1,8 @@
-BASE_DIR = '/home/marta/jku/emotion-popularity/'
+BASE_DIR = '<YOUR_HOME>/emotion-popularity/'
 DATA_DIR = BASE_DIR + 'data/'
-NOTEBOOKS_DIR = BASE_DIR + 'notebooks/'
-PSYIAS_DIR = BASE_DIR + 'psyias_2024/'
-ONION_DIR = DATA_DIR + 'alternate_selection_repeating_artists_listeners/'
+UMAP_DIR = BASE_DIR + 'umap2024/'
+ONION_DIR = DATA_DIR + 'onion_data/'
 ASSETS_DIR = BASE_DIR + 'assets/'
-RECBOLE_DATA_DIR = PSYIAS_DIR + 'recbole_data/'
+RECBOLE_DATA_DIR = UMAP_DIR + 'recbole_data/dataset/onion/'
+
+gems_9 = ['tend', 'joya', 'tran', 'peac', 'nost', 'wond', 'ener', 'sadn', 'tens']
