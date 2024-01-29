@@ -1,7 +1,7 @@
 #model config
-model: FM
-data_path: /home/marta/jku/emotion-popularity/notebooks/psyias2024/recbole_data/dataset/
-dataset: onion # ml-100k
+# model: FM
+data_path: <YOUR_DATA_PATH>
+dataset: onion
 
 # dataset config : Context-aware Recommendation
 load_col:
