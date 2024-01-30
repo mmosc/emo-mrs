@@ -1,5 +1,5 @@
 import pandas as pd
-from conf import DATA_DIR, gems_9
+from conf import DATA_DIR, gems_9, RECBOLE_DATA_DIR
 import numpy as np
 
 emma_user_level = pd.read_csv(f'{DATA_DIR}/EMMA_total_prt.csv', low_memory=False)
@@ -33,4 +33,4 @@ song_majority_bin['emotions:token_seq'] = indices
 song_majority_bin_for_recbole = song_majority_bin[['item_id:token', 'emotions:token_seq']]
 song_majority_bin_for_recbole
 #%%
-song_majority_bin_for_recbole.to_csv('/home/marta/jku/emotion-popularity/notebooks/psyias2024/recbole_data/emma_majority.item', sep='\t', index=None)
+song_majority_bin_for_recbole.to_csv(f'{RECBOLE_DATA_DIR}/emma_majority.item', sep='\t', index=None)
